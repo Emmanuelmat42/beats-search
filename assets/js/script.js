@@ -31,13 +31,15 @@ window.addEventListener("scroll", () => {
 // APPARITION DES SECTIONS
 // =======================================
 
-const sections = document.querySelectorAll("section");
+const sections = document.querySelectorAll(
+".beats, .presentation, .services, .about-section, .contact-section, .contact-form"
+);
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries)=>{
 
-    entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
 
             entry.target.classList.add("show");
 
@@ -45,13 +47,11 @@ const observer = new IntersectionObserver((entries) => {
 
     });
 
-}, {
-
-    threshold:0.15
-
+},{
+    threshold:0.1
 });
 
-sections.forEach(section => {
+sections.forEach(section=>{
 
     section.classList.add("hidden");
 

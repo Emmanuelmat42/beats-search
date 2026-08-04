@@ -207,7 +207,7 @@ header{
 
 .hero{
 
-    height:100vh;
+    min-height:100vh;
 
     display:flex;
 
@@ -217,17 +217,17 @@ header{
 
     text-align:center;
 
-    position:relative;
+    padding:120px 20px;
 
     background:
-
-    linear-gradient(rgba(9,9,11,.82),rgba(9,9,11,.88)),
-
+    linear-gradient(rgba(9,9,11,.82),rgba(9,9,11,.92)),
     url("../img/hero.jpg");
 
     background-size:cover;
 
     background-position:center;
+
+    background-repeat:no-repeat;
 
 }
 
@@ -919,5 +919,47 @@ transform:translateY(-5px);
 opacity:1 !important;
 
 pointer-events:auto !important;
+
+}
+/* ===========================
+   MOBILE
+=========================== */
+
+
+/* ===========================
+   HERO MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+.hero{
+
+    background:
+    linear-gradient(rgba(9,9,11,.80),rgba(9,9,11,.90)),
+    url("../img/hero-mobile.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    min-height:100vh;
+
+    padding:120px 20px 60px;
+
+}
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+.hero p{
+
+    font-size:17px;
+
+}
 
 }
