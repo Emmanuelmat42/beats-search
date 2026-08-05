@@ -854,9 +854,9 @@ footer p{
 
 opacity:0;
 
-transform:translateY(60px);
+transform:translateY(40px);
 
-transition:all .8s ease;
+transition:0.8s ease;
 
 }
 

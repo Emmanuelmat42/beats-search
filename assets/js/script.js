@@ -31,15 +31,13 @@ window.addEventListener("scroll", () => {
 // APPARITION DES SECTIONS
 // =======================================
 
-const sections = document.querySelectorAll(
-".beats, .presentation, .services, .about-section, .contact-section, .contact-form"
-);
+const hiddenElements = document.querySelectorAll(".hidden");
 
-const observer = new IntersectionObserver((entries)=>{
+const observer = new IntersectionObserver((entries) => {
 
-    entries.forEach(entry=>{
+    entries.forEach(entry => {
 
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
 
             entry.target.classList.add("show");
 
@@ -47,39 +45,12 @@ const observer = new IntersectionObserver((entries)=>{
 
     });
 
-},{
-    threshold:0.1
+}, {
+    threshold: 0.05
 });
 
-sections.forEach(section=>{
+hiddenElements.forEach(el => observer.observe(el));
 
-    section.classList.add("hidden");
-
-    observer.observe(section);
-
-});
-
-// =======================================
-// BOUTON WHATSAPP
-// =======================================
-
-document.querySelectorAll(".buy-btn").forEach(button=>{
-
-    button.addEventListener("click",function(){
-
-        const card=this.closest(".beat-card");
-
-        const beatName=card.querySelector("h3").textContent;
-
-        const message=`Bonjour Matis Production, je souhaite acheter le beat "${beatName}".`;
-
-        const url=`https://wa.me/243853461191?text=${encodeURIComponent(message)}`;
-
-        window.open(url,"_blank");
-
-    });
-
-});
 
 // =======================================
 // RETOUR EN HAUT
@@ -141,6 +112,24 @@ players.forEach(player => {
             }
 
         });
+
+    });
+
+});
+
+// Correction pour certains téléphones
+
+window.addEventListener("load", () => {
+
+    document.querySelectorAll(".hidden").forEach(el => {
+
+        const rect = el.getBoundingClientRect();
+
+        if(rect.top < window.innerHeight){
+
+            el.classList.add("show");
+
+        }
 
     });
 
