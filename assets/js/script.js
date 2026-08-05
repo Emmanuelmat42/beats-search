@@ -136,5 +136,33 @@ window.addEventListener("load", () => {
 });
 
 // =======================================
+// HERO STATS MOBILE
+// =======================================
+
+if(window.innerWidth <= 768){
+
+    const stats = document.querySelectorAll(".hero-stats .stat");
+
+    let index = 0;
+
+    setInterval(()=>{
+
+        stats[index].classList.remove("active");
+
+        index++;
+
+        if(index >= stats.length){
+
+            index = 0;
+
+        }
+
+        stats[index].classList.add("active");
+
+    },2000);
+
+}
+
+// =======================================
 // FIN
 // =======================================

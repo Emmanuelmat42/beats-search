@@ -921,44 +921,219 @@ opacity:1 !important;
 pointer-events:auto !important;
 
 }
-/* ===========================
-   MOBILE
-=========================== */
+/* ==========================================
+   RESPONSIVE MOBILE - INDEX UNIQUEMENT
+========================================== */
 
+@media screen and (max-width:768px){
 
-/* ===========================
-   HERO MOBILE
-=========================== */
-
-@media(max-width:768px){
+/* HERO */
 
 .hero{
 
+    min-height:100vh;
+
+    padding:120px 20px 80px;
+
     background:
-    linear-gradient(rgba(9,9,11,.80),rgba(9,9,11,.90)),
+    linear-gradient(rgba(9,9,11,.80),rgba(9,9,11,.92)),
     url("../img/hero-mobile.jpg");
 
     background-size:cover;
-
     background-position:center;
-
     background-repeat:no-repeat;
 
-    min-height:100vh;
+}
 
-    padding:120px 20px 60px;
+.hero-content{
+
+    width:100%;
+    max-width:100%;
 
 }
 
 .hero h1{
 
-    font-size:38px;
+    font-size:42px;
+    line-height:1.2;
 
 }
 
 .hero p{
 
     font-size:17px;
+    margin:25px 0;
+
+}
+
+.hero-btn{
+
+    width:100%;
+    max-width:320px;
+    margin:auto;
+    display:block;
+
+}
+
+/* HERO STATS */
+
+.hero-stats{
+
+    position:relative;
+
+    width:220px;
+
+    height:120px;
+
+    margin:40px auto;
+
+    overflow:hidden;
+
+}
+.hero-stats .stat{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    display:none;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.hero-stats .stat.active{
+
+    display:flex;
+
+}
+
+.hero-stats h2{
+
+    font-size:30px;
+
+}
+
+.hero-stats p{
+
+    font-size:15px;
+
+}
+
+
+/* SECTIONS */
+
+.presentation,
+.about-section{
+
+    padding:70px 20px;
+
+}
+
+.presentation h2,
+.about-section h2{
+
+    font-size:36px;
+
+}
+
+.presentation p,
+.about-section p{
+
+    font-size:17px;
+    line-height:1.8;
+
+}
+
+/* BEATS */
+
+.beats{
+
+    padding:70px 15px;
+
+}
+
+.beat-container{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+
+}
+
+.beat-card{
+
+    width:100%;
+
+    border-radius:18px;
+
+}
+
+.beat-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.beat-info{
+
+    padding:20px;
+
+}
+
+.buy-btn{
+
+    width:100%;
+
+}
+
+/* SERVICES */
+
+.services{
+
+    grid-template-columns:1fr;
+
+}
+
+.service-card{
+
+    width:100%;
+
+}
+
+/* CONTACT */
+
+.contact-section{
+
+    grid-template-columns:1fr;
+
+}
+
+.contact-form{
+
+    padding:20px;
+
+}
+
+/* FOOTER */
+
+footer{
+
+    padding:40px 20px;
 
 }
 
