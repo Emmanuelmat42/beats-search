@@ -93,24 +93,6 @@ players.forEach(player => {
 
 });
 
-// Correction pour certains téléphones
-
-window.addEventListener("load", () => {
-
-    document.querySelectorAll(".hidden").forEach(el => {
-
-        const rect = el.getBoundingClientRect();
-
-        if(rect.top < window.innerHeight){
-
-            el.classList.add("show");
-
-        }
-
-    });
-
-});
-
 // =======================================
 // HERO STATS MOBILE
 // =======================================
