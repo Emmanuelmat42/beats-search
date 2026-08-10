@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Production sur mesure | Beats Search</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/img/logo.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <span class="logo-main">Beats</span>
+                <span class="logo-secondary">Search</span>
+
+            </a>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Accueil</a>
+            </li>
+
+            <li>
+                <a href="beats.html">Beats</a>
+            </li>
+
+            <li>
+                <a href="about.html">À propos</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+        <a href="contact.html" class="btn">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="production-page">
+
+    <div class="production-container">
+
+        <span class="custom-badge">
+            🎵 PRODUCTION SUR MESURE
+        </span>
+
+        <h1>
+            Décris-nous ta production idéale
+        </h1>
+
+        <p class="production-intro">
+            Tu as une idée précise mais tu ne trouves pas
+            le beat qu'il te faut ?
+            Donne-nous les détails et Matis Production
+            pourra créer une production adaptée à ton univers.
+        </p>
+
+
+        <form id="productionForm">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Ton nom / nom d'artiste
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Ex : Matis"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="style">
+                    Style musical
+                </label>
+
+                <input
+                    type="text"
+                    id="style"
+                    placeholder="Ex : Afrobeat, Trap, Drill..."
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="bpm">
+                    BPM souhaité
+                </label>
+
+                <input
+                    type="text"
+                    id="bpm"
+                    placeholder="Ex : 100-110 BPM"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="mood">
+                    Ambiance / émotion
+                </label>
+
+                <input
+                    type="text"
+                    id="mood"
+                    placeholder="Ex : sombre, énergique, romantique..."
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="references">
+                    Références musicales
+                </label>
+
+                <input
+                    type="text"
+                    id="references"
+                    placeholder="Artiste, morceau ou style de référence"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="description">
+                    Décris ton idée
+                </label>
+
+                <textarea
+                    id="description"
+                    placeholder="Explique-nous exactement ce que tu imagines..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="production-submit"
+            >
+
+                Envoyer ma demande sur WhatsApp
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h2>Beats Search</h2>
+
+    <p>Powered by Matis Production</p>
+
+    <p>© 2026 Tous droits réservés.</p>
+
+</footer>
+
+
+<script>
+
+document
+    .getElementById("productionForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const style =
+            document.getElementById("style").value.trim();
+
+        const bpm =
+            document.getElementById("bpm").value.trim();
+
+        const mood =
+            document.getElementById("mood").value.trim();
+
+        const references =
+            document.getElementById("references").value.trim();
+
+        const description =
+            document.getElementById("description").value.trim();
+
+
+        const message =
+`🎵 DEMANDE DE PRODUCTION SUR MESURE
+
+👤 Nom / Artiste :
+${name}
+
+🎼 Style :
+${style}
+
+🥁 BPM :
+${bpm || "Non précisé"}
+
+🌙 Ambiance :
+${mood}
+
+🎧 Références :
+${references || "Aucune"}
+
+💡 IDÉE DU CLIENT :
+${description}
+
+--------------------------------
+Envoyé depuis Beats Search`;
+
+
+        const whatsappNumber = "243853461191";
+
+        const whatsappURL =
+            "https://wa.me/" +
+            whatsappNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    });
+
+</script>
+
+</body>
+
+</html>

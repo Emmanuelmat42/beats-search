@@ -1126,3 +1126,1042 @@ footer{
     transform:none !important;
 
 }
+/* ==========================================
+   PRODUCTION SUR MESURE
+========================================== */
+
+.custom-production {
+
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 55px 30px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(124,58,237,.20),
+            transparent 45%
+        ),
+        var(--card);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+
+    animation: customFloat 4s ease-in-out infinite;
+
+}
+
+.custom-production-content {
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+}
+
+.custom-badge {
+
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    padding: 7px 14px;
+
+    border-radius: 30px;
+
+    background: rgba(124,58,237,.15);
+
+    color: var(--secondary);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: .5px;
+
+}
+
+.custom-production h2 {
+
+    font-size: 34px;
+
+    line-height: 1.3;
+
+    margin-bottom: 15px;
+
+}
+
+.custom-production p {
+
+    max-width: 600px;
+
+    margin: 0 auto 25px;
+
+    color: var(--gray);
+
+    line-height: 1.8;
+
+    font-size: 16px;
+
+}
+
+.custom-production-btn {
+
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #7C3AED,
+        #5B21B6
+    );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+}
+
+.custom-production-btn:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(124,58,237,.35);
+
+}
+
+@keyframes customFloat {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-6px);
+
+    }
+
+}
+/* ==========================================
+   PAGE PRODUCTION SUR MESURE
+========================================== */
+
+.production-page {
+
+    min-height:100vh;
+
+    padding:150px 20px 100px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.production-container {
+
+    width:100%;
+
+    max-width:800px;
+
+    margin:auto;
+
+    padding:45px;
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.3);
+
+}
+
+.production-container > h1 {
+
+    font-size:48px;
+
+    line-height:1.2;
+
+    margin:20px 0;
+
+}
+
+.production-intro {
+
+    color:var(--gray);
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.form-group {
+
+    margin-bottom:22px;
+
+}
+
+.form-group label {
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.form-group input,
+.form-group textarea {
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:#111;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color:var(--primary);
+
+}
+
+.form-group textarea {
+
+    min-height:180px;
+
+    resize:vertical;
+
+}
+
+.production-submit {
+
+    width:100%;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7C3AED,
+            #5B21B6
+        );
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.production-submit:hover {
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(124,58,237,.35);
+
+}
+
+
+/* ==========================================
+   PRODUCTION MOBILE
+========================================== */
+
+@media screen and (max-width:768px) {
+
+    .production-page {
+
+        padding:
+            120px 15px
+            60px;
+
+    }
+
+    .production-container {
+
+        padding:28px 20px;
+
+        border-radius:20px;
+
+    }
+
+    .production-container > h1 {
+
+        font-size:34px;
+
+    }
+
+    .production-intro {
+
+        font-size:15px;
+
+        line-height:1.7;
+
+    }
+
+    .form-group input,
+    .form-group textarea {
+
+        font-size:16px;
+
+    }
+
+}
+/* =========================================================
+   RESPONSIVE GLOBAL - BEATS SEARCH
+   Mobile / Tablette / PC
+   À AJOUTER À LA FIN DU CSS
+========================================================= */
+
+/* ---------- BASE ANTI-DÉBORDEMENT ---------- */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.nav-links {
+    flex-wrap: wrap;
+}
+
+
+/* ---------- PAGE HEADER ---------- */
+
+.page-header {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+}
+
+.page-header h1,
+.page-header p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   BEATS - STRUCTURE RESPONSIVE
+========================================================= */
+
+.beats {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 25px;
+}
+
+.beat-container {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+
+    /* PC */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+    align-items: stretch;
+}
+
+.beat-card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.beat-card img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    height: 280px;
+
+    object-fit: cover;
+}
+
+.beat-info {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.beat-info h3,
+.beat-info p,
+.beat-info span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.beat-info audio {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+}
+
+.buy-btn {
+    width: 100%;
+    max-width: 100%;
+
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: normal;
+}
+
+
+/* =========================================================
+   PRODUCTION SUR MESURE
+========================================================= */
+
+.custom-production {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+}
+
+.custom-production-content {
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.custom-production h2,
+.custom-production p {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   TABLETTE
+   769px → 1100px
+========================================================= */
+
+@media screen and (max-width: 1100px) {
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .beats {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .beat-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+    }
+
+    .beat-card img {
+        height: 250px;
+    }
+
+}
+
+
+/* =========================================================
+   PETITE TABLETTE / GRAND MOBILE
+   769px → 900px
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   0 → 768px
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* ---------- GLOBAL ---------- */
+
+    body {
+        width: 100%;
+        min-width: 0;
+    }
+
+
+    /* ---------- NAVBAR ---------- */
+
+    header {
+        width: 100%;
+    }
+
+    .navbar {
+        width: 100%;
+
+        padding:
+            12px
+            15px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 12px;
+    }
+
+    .logo {
+        max-width: 100%;
+    }
+
+    .logo a {
+        max-width: 100%;
+    }
+
+    .logo-main,
+    .logo-secondary {
+        font-size: 24px;
+    }
+
+    .logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .nav-links {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 14px;
+
+        flex-wrap: wrap;
+
+        list-style: none;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .navbar > .btn {
+        display: none;
+    }
+
+
+    /* ---------- PAGE HEADER ---------- */
+
+    .page-header {
+        width: 100%;
+
+        padding:
+            130px
+            15px
+            50px;
+    }
+
+    .page-header h1 {
+        font-size: clamp(32px, 9vw, 46px);
+        line-height: 1.15;
+    }
+
+    .page-header p {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    /* ---------- BEATS ---------- */
+
+    .beats {
+        width: 100%;
+
+        padding:
+            50px
+            12px
+            70px;
+    }
+
+    .beat-container {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        gap: 22px;
+    }
+
+    .beat-card {
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+
+        border-radius: 18px;
+    }
+
+    .beat-card img {
+
+        width: 100%;
+        max-width: 100%;
+
+        height: auto;
+
+        aspect-ratio: 16 / 10;
+
+        object-fit: cover;
+    }
+
+    .beat-info {
+
+        width: 100%;
+        min-width: 0;
+
+        padding: 18px;
+    }
+
+    .beat-info h3 {
+
+        font-size: 21px;
+
+        line-height: 1.3;
+
+        margin-bottom: 8px;
+    }
+
+    .beat-info p {
+
+        font-size: 14px;
+
+        line-height: 1.6;
+
+        margin-bottom: 12px;
+    }
+
+    .beat-info span {
+
+        font-size: 22px;
+
+        margin-bottom: 16px;
+    }
+
+    .beat-info audio {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        margin-bottom: 16px;
+    }
+
+    .buy-btn {
+
+        width: 100%;
+
+        padding:
+            14px
+            12px;
+
+        min-height: 50px;
+    }
+
+
+    /* ---------- PRODUCTION ---------- */
+
+    .custom-production {
+
+        grid-column: 1;
+
+        width: 100%;
+
+        margin-top: 5px;
+
+        padding:
+            35px
+            18px;
+
+        border-radius: 20px;
+    }
+
+    .custom-production-content {
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .custom-production h2 {
+
+        font-size: 26px;
+
+        line-height: 1.3;
+    }
+
+    .custom-production p {
+
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+    .custom-production-btn {
+
+        width: 100%;
+
+        max-width: 320px;
+
+        padding:
+            14px
+            18px;
+    }
+
+
+    /* ---------- PRESENTATION ---------- */
+
+    .presentation {
+
+        width: 100%;
+
+        padding:
+            60px
+            18px;
+    }
+
+    .presentation h2 {
+
+        font-size: 30px;
+
+        line-height: 1.3;
+    }
+
+    .presentation p {
+
+        font-size: 15px;
+
+        line-height: 1.8;
+    }
+
+
+    /* ---------- SERVICES ---------- */
+
+    .services {
+
+        width: 100%;
+
+        padding:
+            40px
+            15px
+            70px;
+
+        grid-template-columns:
+            minmax(0, 1fr);
+    }
+
+    .service-card {
+
+        width: 100%;
+
+        min-width: 0;
+    }
+
+
+    /* ---------- ABOUT ---------- */
+
+    .about-section {
+
+        width: 100%;
+
+        padding:
+            60px
+            18px;
+    }
+
+    .about-container h2 {
+
+        font-size: 30px;
+    }
+
+
+    /* ---------- CONTACT ---------- */
+
+    .contact-section {
+
+        width: 100%;
+
+        padding:
+            40px
+            15px;
+
+        grid-template-columns:
+            minmax(0, 1fr);
+    }
+
+    .contact-card {
+
+        width: 100%;
+        min-width: 0;
+    }
+
+    .contact-form {
+
+        width: 100%;
+
+        padding:
+            20px
+            15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+
+        width: 100%;
+
+        padding:
+            40px
+            15px;
+    }
+
+}
+
+
+/* =========================================================
+   TRÈS PETITS ÉCRANS
+   320px → 480px
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    .navbar {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .page-header {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .beats {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .beat-container {
+        gap: 18px;
+    }
+
+    .beat-info {
+        padding: 16px;
+    }
+
+    .beat-info h3 {
+        font-size: 19px;
+    }
+
+    .beat-info p {
+        font-size: 13px;
+    }
+
+    .beat-info span {
+        font-size: 21px;
+    }
+
+    .custom-production {
+        padding:
+            30px
+            15px;
+    }
+
+    .custom-production h2 {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================================================
+   ÉCRANS EXTRÊMEMENT PETITS
+   ~320px
+========================================================= */
+
+@media screen and (max-width: 340px) {
+
+    .logo-main,
+    .logo-secondary {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .beats {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .beat-info {
+        padding: 14px;
+    }
+
+    .custom-production {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+}
+
+
+/* =========================================================
+   SÉCURITÉ CONTRE LES ÉLÉMENTS TROP LARGES
+========================================================= */
+
+.beats *,
+.page-header *,
+.custom-production *,
+.services *,
+.contact-section *,
+.about-section * {
+    max-width: 100%;
+}
+
+audio {
+    max-width: 100%;
+}
+
+input,
+textarea,
+button,
+select {
+    max-width: 100%;
+}
