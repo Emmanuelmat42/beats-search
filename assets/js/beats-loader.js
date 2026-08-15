@@ -13,8 +13,7 @@ import {
     collection,
     getDocs,
     query,
-    where,
-    orderBy
+    where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 function escapeHtml(str) {
@@ -92,8 +91,7 @@ async function loadBeatsFromFirestore() {
 
         const beatsQuery = query(
             collection(db, "beats"),
-            where("active", "==", true),
-            orderBy("createdAt", "desc")
+            where("active", "==", true)
         );
 
         const snapshot = await getDocs(beatsQuery);
@@ -104,15 +102,24 @@ async function loadBeatsFromFirestore() {
             return;
         }
 
+        // Tri côté client (plus récent en premier) : évite d'avoir
+        // besoin d'un index composite Firestore (where + orderBy sur
+        // deux champs différents).
+        const docsArray = snapshot.docs.slice().sort((a, b) => {
+            const timeA = a.data().createdAt ? a.data().createdAt.toMillis() : 0;
+            const timeB = b.data().createdAt ? b.data().createdAt.toMillis() : 0;
+            return timeB - timeA;
+        });
+
         const customCard = container.querySelector(".custom-production");
 
         // On retire uniquement les anciennes cartes de beats,
         // jamais la carte "Production sur mesure".
         container.querySelectorAll(".beat-card").forEach((card) => card.remove());
 
-        let order = snapshot.size;
+        let order = docsArray.length;
 
-        snapshot.forEach((docSnap) => {
+        docsArray.forEach((docSnap) => {
             const card = buildBeatCard(docSnap.id, docSnap.data(), order);
             container.insertBefore(card, customCard || null);
             order--;

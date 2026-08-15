@@ -8,9 +8,7 @@ import {
     collection,
     getDocs,
     query,
-    where,
-    orderBy,
-    limit
+    where
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 function escapeHtml(str) {
@@ -33,16 +31,22 @@ async function loadAnnouncementBanner() {
 
         const announcementsQuery = query(
             collection(db, "announcements"),
-            where("active", "==", true),
-            orderBy("createdAt", "desc"),
-            limit(1)
+            where("active", "==", true)
         );
 
         const snapshot = await getDocs(announcementsQuery);
 
         if (snapshot.empty) return;
 
-        const docSnap = snapshot.docs[0];
+        // Sélection de l'annonce la plus récente côté client : évite
+        // d'avoir besoin d'un index composite Firestore.
+        const docsArray = snapshot.docs.slice().sort((a, b) => {
+            const timeA = a.data().createdAt ? a.data().createdAt.toMillis() : 0;
+            const timeB = b.data().createdAt ? b.data().createdAt.toMillis() : 0;
+            return timeB - timeA;
+        });
+
+        const docSnap = docsArray[0];
         const data = docSnap.data();
 
         const dismissedId = localStorage.getItem("bs_dismissed_announcement");
