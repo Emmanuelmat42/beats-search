@@ -11,6 +11,7 @@
     >
 
     <title>Production sur mesure | Beats Search</title>
+    <meta name="description" content="Décris ton idée de production musicale et Matis Production crée un beat sur mesure adapté à ton style, ton ambiance et ton budget.">
 
     <link
         rel="icon"
@@ -40,6 +41,8 @@
 
             <a href="index.html">
 
+                <img src="assets/img/logo.png" alt="Beats Search Logo">
+
                 <span class="logo-main">Beats</span>
                 <span class="logo-secondary">Search</span>
 
@@ -47,7 +50,9 @@
 
         </div>
 
-        <ul class="nav-links">
+        <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">☰</button>
+
+        <ul class="nav-links" id="mainNavLinks">
 
             <li>
                 <a href="index.html">Accueil</a>
@@ -96,13 +101,13 @@
         </p>
 
 
-        <form id="productionForm">
+        <form id="productionForm" novalidate>
 
 
             <div class="form-group">
 
                 <label for="name">
-                    Ton nom / nom d'artiste
+                    Ton nom / nom d'artiste *
                 </label>
 
                 <input
@@ -112,13 +117,33 @@
                     required
                 >
 
+                <p class="form-error" id="error-name" hidden>Merci d'indiquer ton nom.</p>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="whatsapp">
+                    Ton numéro WhatsApp *
+                </label>
+
+                <input
+                    type="tel"
+                    id="whatsapp"
+                    placeholder="Ex : +243 8XX XXX XXX"
+                    required
+                >
+
+                <p class="form-error" id="error-whatsapp" hidden>Merci d'indiquer un numéro WhatsApp valide.</p>
+
             </div>
 
 
             <div class="form-group">
 
                 <label for="style">
-                    Style musical
+                    Style musical *
                 </label>
 
                 <input
@@ -127,6 +152,8 @@
                     placeholder="Ex : Afrobeat, Trap, Drill..."
                     required
                 >
+
+                <p class="form-error" id="error-style" hidden>Merci d'indiquer un style musical.</p>
 
             </div>
 
@@ -143,13 +170,38 @@
                     placeholder="Ex : 100-110 BPM"
                 >
 
+                <label class="form-checkbox">
+                    <input type="checkbox" id="bpmUnknown">
+                    Je ne connais pas le BPM
+                </label>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="key">
+                    Tonalité souhaitée
+                </label>
+
+                <input
+                    type="text"
+                    id="key"
+                    placeholder="Ex : A minor"
+                >
+
+                <label class="form-checkbox">
+                    <input type="checkbox" id="keyUnknown">
+                    Je ne connais pas la tonalité
+                </label>
+
             </div>
 
 
             <div class="form-group">
 
                 <label for="mood">
-                    Ambiance / émotion
+                    Ambiance / émotion *
                 </label>
 
                 <input
@@ -158,6 +210,8 @@
                     placeholder="Ex : sombre, énergique, romantique..."
                     required
                 >
+
+                <p class="form-error" id="error-mood" hidden>Merci de décrire l'ambiance recherchée.</p>
 
             </div>
 
@@ -179,8 +233,67 @@
 
             <div class="form-group">
 
+                <label for="instruments">
+                    Instruments souhaités
+                </label>
+
+                <input
+                    type="text"
+                    id="instruments"
+                    placeholder="Ex : piano, guitare, percussions africaines..."
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="songType">
+                    Type de morceau
+                </label>
+
+                <input
+                    type="text"
+                    id="songType"
+                    placeholder="Ex : intro, refrain, morceau complet, freestyle..."
+                >
+
+            </div>
+
+
+            <div class="form-group form-group-half">
+
+                <div>
+                    <label for="budget">
+                        Budget approximatif
+                    </label>
+
+                    <input
+                        type="text"
+                        id="budget"
+                        placeholder="Ex : 10-15 $"
+                    >
+                </div>
+
+                <div>
+                    <label for="deadline">
+                        Délai souhaité
+                    </label>
+
+                    <input
+                        type="text"
+                        id="deadline"
+                        placeholder="Ex : sous 3 jours"
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
                 <label for="description">
-                    Décris ton idée
+                    Décris ton idée *
                 </label>
 
                 <textarea
@@ -188,6 +301,8 @@
                     placeholder="Explique-nous exactement ce que tu imagines..."
                     required
                 ></textarea>
+
+                <p class="form-error" id="error-description" hidden>Merci de décrire ton idée en quelques phrases.</p>
 
             </div>
 
@@ -221,30 +336,82 @@
 
 <script>
 
-document
-    .getElementById("productionForm")
-    .addEventListener("submit", function(event) {
+(function () {
+
+    const form = document.getElementById("productionForm");
+
+    if (!form) return;
+
+    const bpmUnknown = document.getElementById("bpmUnknown");
+    const bpmInput = document.getElementById("bpm");
+    const keyUnknown = document.getElementById("keyUnknown");
+    const keyInput = document.getElementById("key");
+
+    if (bpmUnknown && bpmInput) {
+        bpmUnknown.addEventListener("change", () => {
+            bpmInput.disabled = bpmUnknown.checked;
+            if (bpmUnknown.checked) bpmInput.value = "";
+        });
+    }
+
+    if (keyUnknown && keyInput) {
+        keyUnknown.addEventListener("change", () => {
+            keyInput.disabled = keyUnknown.checked;
+            if (keyUnknown.checked) keyInput.value = "";
+        });
+    }
+
+    form.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
+        const fields = {
+            name: document.getElementById("name"),
+            whatsapp: document.getElementById("whatsapp"),
+            style: document.getElementById("style"),
+            mood: document.getElementById("mood"),
+            description: document.getElementById("description")
+        };
 
-        const name =
-            document.getElementById("name").value.trim();
+        let isValid = true;
 
-        const style =
-            document.getElementById("style").value.trim();
+        Object.keys(fields).forEach((key) => {
+            const field = fields[key];
+            const errorEl = document.getElementById("error-" + key);
+            const value = field.value.trim();
 
-        const bpm =
-            document.getElementById("bpm").value.trim();
+            if (!value) {
+                isValid = false;
+                field.classList.add("input-error");
+                if (errorEl) errorEl.hidden = false;
+            } else {
+                field.classList.remove("input-error");
+                if (errorEl) errorEl.hidden = true;
+            }
+        });
 
-        const mood =
-            document.getElementById("mood").value.trim();
+        if (!isValid) {
+            const firstInvalid = form.querySelector(".input-error");
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
 
-        const references =
-            document.getElementById("references").value.trim();
-
-        const description =
-            document.getElementById("description").value.trim();
+        const name = fields.name.value.trim();
+        const whatsappNumberClient = fields.whatsapp.value.trim();
+        const style = fields.style.value.trim();
+        const bpm = bpmUnknown && bpmUnknown.checked
+            ? "Non précisé"
+            : (bpmInput.value.trim() || "Non précisé");
+        const key = keyUnknown && keyUnknown.checked
+            ? "Non précisée"
+            : (keyInput.value.trim() || "Non précisée");
+        const mood = fields.mood.value.trim();
+        const references = document.getElementById("references").value.trim();
+        const instruments = document.getElementById("instruments").value.trim();
+        const songType = document.getElementById("songType").value.trim();
+        const budget = document.getElementById("budget").value.trim();
+        const deadline = document.getElementById("deadline").value.trim();
+        const description = fields.description.value.trim();
 
 
         const message =
@@ -253,17 +420,35 @@ document
 👤 Nom / Artiste :
 ${name}
 
+📱 WhatsApp :
+${whatsappNumberClient}
+
 🎼 Style :
 ${style}
 
 🥁 BPM :
-${bpm || "Non précisé"}
+${bpm}
+
+🎹 Tonalité :
+${key}
 
 🌙 Ambiance :
 ${mood}
 
 🎧 Références :
 ${references || "Aucune"}
+
+🎸 Instruments souhaités :
+${instruments || "Non précisé"}
+
+🎬 Type de morceau :
+${songType || "Non précisé"}
+
+💰 Budget :
+${budget || "Non précisé"}
+
+⏱️ Délai souhaité :
+${deadline || "Non précisé"}
 
 💡 IDÉE DU CLIENT :
 ${description}
@@ -288,7 +473,11 @@ Envoyé depuis Beats Search`;
 
     });
 
+})();
+
 </script>
+
+<script src="assets/js/script.js"></script>
 
 </body>
 

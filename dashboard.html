@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Espace producteur | Beats Search</title>
+    <meta name="description" content="Espace de gestion réservé à Matis Production.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="assets/img/logo.png">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/img/logo.png" alt="Beats Search Logo">
+                <span class="logo-main">Beats</span>
+                <span class="logo-secondary">Search</span>
+            </a>
+        </div>
+
+        <button type="button" id="dashboardLogout" class="btn dashboard-logout-btn" hidden>
+            Déconnexion
+        </button>
+
+    </nav>
+
+</header>
+
+<section class="page-header">
+    <h1>Espace producteur</h1>
+    <p>Gestion de Beats Search — réservé à Matis Production.</p>
+</section>
+
+<section class="dashboard-state" id="dashboardChecking">
+    <p>Vérification de la connexion...</p>
+</section>
+
+<section class="dashboard-state" id="dashboardDenied" hidden>
+    <div class="dashboard-state-box">
+        <h2>🔒 Accès refusé</h2>
+        <p>Tu dois être connecté en tant que producteur pour accéder à cette page.</p>
+        <a href="index.html" class="btn">Retour à l'accueil</a>
+    </div>
+</section>
+
+<section class="dashboard-content" id="dashboardContent" hidden>
+
+    <div class="dashboard-welcome">
+        <span class="custom-badge">✅ CONNECTÉ</span>
+        <h2>Bienvenue, <span id="dashboardUserEmail">producteur</span></h2>
+        <p>Connexion sécurisée via Firebase Authentication.</p>
+    </div>
+
+    <!-- ================= STATISTIQUES RÉELLES ================= -->
+
+    <div class="dashboard-stats">
+
+        <div class="dashboard-stat-card">
+            <h3 id="statBeatsCount">—</h3>
+            <p>Beats au total</p>
+        </div>
+
+        <div class="dashboard-stat-card">
+            <h3 id="statActiveBeatsCount">—</h3>
+            <p>Beats actifs</p>
+        </div>
+
+        <div class="dashboard-stat-card">
+            <h3 id="statAnnouncementsCount">—</h3>
+            <p>Annonces</p>
+        </div>
+
+    </div>
+
+    <p class="dashboard-stats-note">
+        ⚠️ Seules des statistiques réellement calculables depuis Firestore sont
+        affichées (comptages). Les visites, écoutes ou commandes nécessiteraient
+        un service d'analytics supplémentaire — non mis en place pour l'instant.
+    </p>
+
+    <!-- ================= GESTION DES BEATS ================= -->
+
+    <div class="dashboard-section">
+
+        <div class="dashboard-section-header">
+            <h2>🎧 Gestion des Beats</h2>
+            <button type="button" id="importCatalogBtn" class="dashboard-secondary-btn">
+                Importer le catalogue actuel (13 beats)
+            </button>
+        </div>
+
+        <p class="dashboard-section-hint">
+            L'import ajoute une seule fois les 13 beats déjà présents sur le site
+            dans Firestore, pour pouvoir ensuite les gérer ici. À utiliser une
+            seule fois.
+        </p>
+
+        <form id="beatForm" class="dashboard-form" novalidate>
+
+            <input type="hidden" id="beatId" value="">
+
+            <div class="dashboard-form-grid">
+
+                <div class="form-group">
+                    <label for="beatName">Nom du beat *</label>
+                    <input type="text" id="beatName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="beatGenre">Genre *</label>
+                    <input type="text" id="beatGenre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="beatBpm">BPM</label>
+                    <input type="text" id="beatBpm">
+                </div>
+
+                <div class="form-group">
+                    <label for="beatKey">Tonalité</label>
+                    <input type="text" id="beatKey">
+                </div>
+
+                <div class="form-group">
+                    <label for="beatPrice">Prix ($) *</label>
+                    <input type="number" id="beatPrice" step="0.1" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="beatImageUrl">URL de l'image</label>
+                    <input type="text" id="beatImageUrl" placeholder="assets/img/beat1.jpg">
+                </div>
+
+                <div class="form-group">
+                    <label for="beatAudioUrl">URL du fichier audio</label>
+                    <input type="text" id="beatAudioUrl" placeholder="assets/audio/beat1.mp3">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-checkbox" for="beatActive">
+                        <input type="checkbox" id="beatActive" checked>
+                        Visible sur le site
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="beatDescription">Description / informations supplémentaires</label>
+                <textarea id="beatDescription"></textarea>
+            </div>
+
+            <p class="form-error" id="beatFormError" hidden></p>
+
+            <div class="dashboard-form-actions">
+                <button type="submit" class="production-submit" id="beatFormSubmit">Ajouter le beat</button>
+                <button type="button" class="reset-filters-btn" id="beatFormCancel" hidden>Annuler la modification</button>
+            </div>
+
+        </form>
+
+        <div class="admin-list" id="beatsList">
+            <p class="dashboard-empty">Chargement des beats...</p>
+        </div>
+
+    </div>
+
+    <!-- ================= GESTION DES ANNONCES ================= -->
+
+    <div class="dashboard-section">
+
+        <div class="dashboard-section-header">
+            <h2>📢 Gestion des annonces</h2>
+        </div>
+
+        <form id="announcementForm" class="dashboard-form" novalidate>
+
+            <input type="hidden" id="announcementId" value="">
+
+            <div class="dashboard-form-grid">
+
+                <div class="form-group">
+                    <label for="announcementTitle">Titre *</label>
+                    <input type="text" id="announcementTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-checkbox" for="announcementActive">
+                        <input type="checkbox" id="announcementActive" checked>
+                        Annonce active (visible sur l'accueil)
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="announcementMessage">Message *</label>
+                <textarea id="announcementMessage" required></textarea>
+            </div>
+
+            <p class="form-error" id="announcementFormError" hidden></p>
+
+            <div class="dashboard-form-actions">
+                <button type="submit" class="production-submit" id="announcementFormSubmit">Publier l'annonce</button>
+                <button type="button" class="reset-filters-btn" id="announcementFormCancel" hidden>Annuler la modification</button>
+            </div>
+
+        </form>
+
+        <div class="admin-list" id="announcementsList">
+            <p class="dashboard-empty">Chargement des annonces...</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MODALE DE CONFIRMATION ================= -->
+
+<div class="confirm-overlay" id="confirmModal" hidden>
+    <div class="confirm-box">
+        <p id="confirmModalMessage">Voulez-vous vraiment continuer ?</p>
+        <div class="confirm-box-actions">
+            <button type="button" id="confirmModalNo" class="reset-filters-btn">Annuler</button>
+            <button type="button" id="confirmModalYes" class="confirm-danger-btn">Supprimer</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <h2>Beats Search</h2>
+    <p>Powered by Matis Production</p>
+    <p>© 2026 Tous droits réservés.</p>
+</footer>
+
+<script type="module" src="assets/js/dashboard-guard.js"></script>
+
+<script type="module" src="assets/js/dashboard-crud.js"></script>
+
+</body>
+
+</html>

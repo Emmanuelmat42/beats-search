@@ -23,6 +23,63 @@
 
 <body>
 
+<!-- ================= MENU PRODUCTEUR (discret) ================= -->
+
+<button type="button"
+        id="producerMenuToggle"
+        class="producer-menu-toggle"
+        aria-label="Menu producteur"
+        aria-expanded="false"
+        aria-controls="producerPanel">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</button>
+
+<div class="producer-overlay" id="producerOverlay" hidden></div>
+
+<aside class="producer-panel" id="producerPanel" aria-hidden="true" aria-label="Espace producteur">
+
+    <button type="button" class="producer-panel-close" id="producerPanelClose" aria-label="Fermer le menu">✕</button>
+
+    <div class="producer-panel-content" id="producerPanelDefault">
+
+        <span class="custom-badge">🎚️ ESPACE PRODUCTEUR</span>
+
+        <h2>Espace producteur</h2>
+
+        <p>Réservé aux producteurs autorisés.</p>
+
+        <button type="button" class="producer-access-btn" id="producerAccessBtn">Accéder</button>
+
+    </div>
+
+    <form class="producer-login-form" id="producerLoginForm" hidden novalidate>
+
+        <button type="button" class="producer-back-btn" id="producerBackBtn">← Retour</button>
+
+        <h2>Connexion producteur</h2>
+
+        <div class="form-group">
+            <label for="producerUser">Email</label>
+            <input type="email" id="producerUser" autocomplete="email" placeholder="ton-email@exemple.com">
+        </div>
+
+        <div class="form-group">
+            <label for="producerPass">Mot de passe</label>
+            <input type="password" id="producerPass" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="production-submit">Se connecter</button>
+
+        <p class="producer-login-note" id="producerLoginNote">
+            🔒 Connexion sécurisée via Firebase Authentication.
+        </p>
+
+    </form>
+
+</aside>
+
 <!-- ================= NAVBAR ================= -->
 
 <header>
@@ -42,9 +99,9 @@
 
 </div>
 
-</div>
+        <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">☰</button>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="mainNavLinks">
 
             <li><a class="active" href="index.html">Accueil</a></li>
 
@@ -65,6 +122,8 @@
     </nav>
 
 </header>
+
+<div id="announcementBanner" class="announcement-banner" hidden></div>
 
 <!-- ================= HERO ================= -->
 
@@ -103,9 +162,9 @@
 
     <div class="stat active">
 
-        <h2>120+</h2>
+        <h2>13</h2>
 
-        <p>Beats</p>
+        <p>Beats disponibles</p>
 
     </div>
 
@@ -134,6 +193,10 @@
     </div>
 
 </div>
+
+    </div>
+
+</section>
 
 <!-- ================= PRESENTATION ================= -->
 
@@ -230,6 +293,10 @@
 </footer>
 
 <script src="assets/js/script.js"></script>
+
+<script type="module" src="assets/js/producer-auth.js"></script>
+
+<script type="module" src="assets/js/announcement-banner.js"></script>
 
 </body>
 

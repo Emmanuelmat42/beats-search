@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Beats | Beats Search</title>
+    <meta name="description" content="Découvre et commande des beats professionnels (Afro, Trap, Drill, Dancehall...) créés par Matis Production. Recherche, filtre et écoute avant d'acheter.">
     <link rel="icon" type="image/png" href="assets/img/logo.png">
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -27,11 +28,21 @@
 
         <div class="logo">
 
-            Beats<span>Search</span>
+            <a href="index.html">
+
+                <img src="assets/img/logo.png" alt="Beats Search Logo">
+
+                <span class="logo-main">Beats</span>
+
+                <span class="logo-secondary">Search</span>
+
+            </a>
 
         </div>
 
-        <ul class="nav-links">
+        <button type="button" class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">☰</button>
+
+        <ul class="nav-links" id="mainNavLinks">
 
             <li><a href="index.html">Accueil</a></li>
 
@@ -57,30 +68,98 @@
 
 </section>
 
+<!-- ================= RECHERCHE & FILTRES ================= -->
+
+<section class="beats-toolbar">
+
+    <div class="toolbar-container">
+
+        <div class="toolbar-heading">
+            <h2>Trouve ton beat</h2>
+            <p>Recherche, filtre et écoute avant de commander.</p>
+        </div>
+
+        <div class="search-box">
+
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+            </svg>
+
+            <label for="beatSearch" class="sr-only">Rechercher un beat</label>
+
+            <input type="search" id="beatSearch" placeholder="Rechercher un beat (nom, genre, BPM, tonalité...)" autocomplete="off">
+
+            <button type="button" id="searchReset" class="search-reset" aria-label="Effacer la recherche" hidden>✕</button>
+
+        </div>
+
+        <div class="filters-row">
+
+            <div class="filter-field">
+                <label for="filterGenre">Genre</label>
+                <select id="filterGenre">
+                    <option value="">Tous les genres</option>
+                </select>
+            </div>
+
+            <div class="filter-field">
+                <label for="filterPrice">Prix</label>
+                <select id="filterPrice">
+                    <option value="">Tous les prix</option>
+                    <option value="0-5.9">Moins de 6 $</option>
+                    <option value="6-8.9">6 $ – 9 $</option>
+                    <option value="9-999">9 $ et plus</option>
+                </select>
+            </div>
+
+            <div class="filter-field">
+                <label for="sortBeats">Trier par</label>
+                <select id="sortBeats">
+                    <option value="recent">Plus récents</option>
+                    <option value="price-asc">Prix croissant</option>
+                    <option value="price-desc">Prix décroissant</option>
+                </select>
+            </div>
+
+        </div>
+
+        <p id="resultsCount" class="results-count" aria-live="polite"></p>
+
+    </div>
+
+</section>
+
 <section class="beats">
 
     <div class="beat-container">
 
         <!-- Beat 1 -->
-        <div class="beat-card">
+        <div class="beat-card" data-name="see my crown" data-genre="Afro Trap" data-bpm="122" data-key="Dminor" data-price="5.5" data-order="1">
 
-            <img src="assets/img/beat1.jpg" alt="Look my crown">
+            <div class="beat-card-media">
+                <img src="assets/img/beat1.jpg" alt="Pochette du beat See my crown" loading="eager">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Afro Trap</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
                 <h3>See my crown</h3>
 
                 <p>Afro Trap • 122 BPM • Dminor</p>
 
-                <span>5.5 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat1.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Midnight%20Vibes."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0See%20my%20crown%C2%A0%C2%BB%20(Afro%20Trap%2C%20122%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
@@ -91,26 +170,31 @@
         </div>
 
         <!-- Beat 2 -->
+        <div class="beat-card" data-name="vibe dancehall" data-genre="Afro" data-bpm="126" data-key="Aminor" data-price="10" data-order="2">
 
-        <div class="beat-card">
-
-            <img src="assets/img/beat2.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat2.jpg" alt="Pochette du beat vibe dancehall" loading="eager">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Afro</span>
+                    <span class="badge badge-price">10 $</span>
+                </div>
 
                 <h3>vibe dancehall</h3>
 
                 <p>Afro • 126 BPM • Aminor</p>
 
-                <span>10 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat2.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0vibe%20dancehall%C2%A0%C2%BB%20(Afro%2C%20126%20BPM)%20au%20prix%20de%2010%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
@@ -121,26 +205,31 @@
         </div>
 
         <!-- Beat 3 -->
+        <div class="beat-card" data-name="philadelfia" data-genre="Philly Drill" data-bpm="150" data-key="Eb minor" data-price="8" data-order="3">
 
-        <div class="beat-card">
-
-            <img src="assets/img/beat3.jpg" alt="Love Again">
+            <div class="beat-card-media">
+                <img src="assets/img/beat3.jpg" alt="Pochette du beat Philadelfia" loading="lazy">
+            </div>
 
             <div class="beat-info">
 
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Philly Drill</span>
+                    <span class="badge badge-price">8 $</span>
+                </div>
+
                 <h3>Philadelfia</h3>
 
-                <p>Philly Drill • 150 BPM• Eb minor</p>
+                <p>Philly Drill • 150 BPM • Eb minor</p>
 
-                <span>8 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat3.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Love%20Again."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Philadelfia%C2%A0%C2%BB%20(Philly%20Drill%2C%20150%20BPM)%20au%20prix%20de%208%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
@@ -150,27 +239,32 @@
 
         </div>
 
-         <!-- Beat 4 -->
+        <!-- Beat 4 -->
+        <div class="beat-card" data-name="hood trap" data-genre="Hood Trap" data-bpm="144" data-key="Bminor" data-price="5.5" data-order="4">
 
-        <div class="beat-card">
-
-            <img src="assets/img/beat4.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat4.jpg" alt="Pochette du beat Hood trap" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Hood Trap</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
                 <h3>Hood trap</h3>
 
                 <p>Hood trap • 144 BPM • Bminor</p>
 
-                <span>5.5 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat4.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Hood%20trap%C2%A0%C2%BB%20(Hood%20Trap%2C%20144%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
@@ -181,83 +275,101 @@
         </div>
 
         <!-- Beat 5 -->
+        <div class="beat-card" data-name="trap" data-genre="Trap mélancolique" data-bpm="140" data-key="Aminor" data-price="5.3" data-order="5">
 
-        <div class="beat-card">
-
-            <img src="assets/img/beat5.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat5.jpg" alt="Pochette du beat Trap" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap mélancolique</span>
+                    <span class="badge badge-price">5.3 $</span>
+                </div>
 
                 <h3>Trap</h3>
 
-                <p>trap melencolique • 140 BPM • Aminor</p>
+                <p>Trap mélancolique • 140 BPM • Aminor</p>
 
-                <span>5.3 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat5.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Trap%C2%A0%C2%BB%20(Trap%20m%C3%A9lancolique%2C%20140%20BPM)%20au%20prix%20de%205.3%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-         <!-- Beat 6 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 6 -->
+        <div class="beat-card" data-name="afro" data-genre="Afro Brazil & Jersey" data-bpm="130" data-key="Aminor" data-price="7" data-order="6">
 
-            <img src="assets/img/beat6.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat6.jpg" alt="Pochette du beat Afro" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Afro Brazil &amp; Jersey</span>
+                    <span class="badge badge-price">7 $</span>
+                </div>
 
                 <h3>Afro</h3>
 
-                <p>Afro brazil & jersey• 130 BPM • Aminor</p>
+                <p>Afro brazil &amp; jersey • 130 BPM • Aminor</p>
 
-                <span>7 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat6.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Afro%C2%A0%C2%BB%20(Afro%20Brazil%20%26%20Jersey%2C%20130%20BPM)%20au%20prix%20de%207%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
-          <!-- Beat 7 -->
 
-        <div class="beat-card">
+        </div>
 
-            <img src="assets/img/beat7.jpg" alt="Street Legend">
+        <!-- Beat 7 -->
+        <div class="beat-card" data-name="gang 42" data-genre="Detroit Trap" data-bpm="100" data-key="Dminor" data-price="10" data-order="7">
+
+            <div class="beat-card-media">
+                <img src="assets/img/beat7.jpg" alt="Pochette du beat Gang 42" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Detroit Trap</span>
+                    <span class="badge badge-price">10 $</span>
+                </div>
 
                 <h3>Gang 42</h3>
 
                 <p>Detroit trap • 100 BPM • Dminor</p>
 
-                <span>10 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat7.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Gang%2042%C2%A0%C2%BB%20(Detroit%20Trap%2C%20100%20BPM)%20au%20prix%20de%2010%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
@@ -268,203 +380,430 @@
         </div>
 
         <!-- Beat 8 -->
+        <div class="beat-card" data-name="utopia" data-genre="Trap Future" data-bpm="140" data-key="G" data-price="5.5" data-order="8">
 
-        <div class="beat-card">
-
-            <img src="assets/img/beat8.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat8.jpg" alt="Pochette du beat Utopia" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap Future</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
                 <h3>Utopia</h3>
 
-                <p>trap future •140 BPM • G</p>
+                <p>Trap future • 140 BPM • G</p>
 
-                <span>5.5 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat8.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Utopia%C2%A0%C2%BB%20(Trap%20Future%2C%20140%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-         <!-- Beat 9 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 9 -->
+        <div class="beat-card" data-name="belair" data-genre="Trap & Shatta" data-bpm="98" data-key="E" data-price="5.5" data-order="9">
 
-            <img src="assets/img/beat9.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat9.jpg" alt="Pochette du beat BelAir" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap &amp; Shatta</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
                 <h3>BelAir</h3>
 
-                <p>Trap & Shatta• 98 BPM • E</p>
+                <p>Trap &amp; Shatta • 98 BPM • E</p>
 
-                <span>5.5 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat9.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0BelAir%C2%A0%C2%BB%20(Trap%20%26%20Shatta%2C%2098%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-           <!-- Beat 10 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 10 -->
+        <div class="beat-card" data-name="afro vibes" data-genre="Afro Beats" data-bpm="100" data-key="" data-price="5.5" data-order="10">
 
-            <img src="assets/img/beat10.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat10.jpg" alt="Pochette du beat Afro Vibes" loading="lazy">
+            </div>
 
             <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Afro Beats</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
                 <h3>Afro Vibes</h3>
 
-                <p>Afro beats •100 BPM </p>
+                <p>Afro beats • 100 BPM</p>
 
-                <span>5.5 $</span>
-
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat10.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Afro%20Vibes%C2%A0%C2%BB%20(Afro%20Beats%2C%20100%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-                    <!-- Beat 11 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 11 -->
+        <div class="beat-card" data-name="last dance" data-genre="Trap Love" data-bpm="82" data-key="Em" data-price="5.5" data-order="11">
 
-            <img src="assets/img/beat11.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat11.jpg" alt="Pochette du beat Last Dance" loading="lazy">
+            </div>
 
             <div class="beat-info">
 
-                <h3>Last Dance </h3>
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap Love</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
-                <p>Trap love •82 BPM Em </p>
+                <h3>Last Dance</h3>
 
-                <span>5.5 $</span>
+                <p>Trap love • 82 BPM • Em</p>
 
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat11.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Last%20Dance%C2%A0%C2%BB%20(Trap%20Love%2C%2082%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-                             <!-- Beat 12 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 12 -->
+        <div class="beat-card" data-name="hear from you" data-genre="Sexy Drill" data-bpm="160" data-key="A#m" data-price="5.5" data-order="12">
 
-            <img src="assets/img/beat12.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat12.jpg" alt="Pochette du beat Hear From You" loading="lazy">
+            </div>
 
             <div class="beat-info">
 
-                <h3>Hear From You </h3>
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Sexy Drill</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
-                <p>Sexy Drill •160 BPM A#m </p>
+                <h3>Hear From You</h3>
 
-                <span>5.5 $</span>
+                <p>Sexy Drill • 160 BPM • A#m</p>
 
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat12.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Hear%20From%20You%C2%A0%C2%BB%20(Sexy%20Drill%2C%20160%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
 
-                                      <!-- Beat 13 -->
+        </div>
 
-        <div class="beat-card">
+        <!-- Beat 13 -->
+        <div class="beat-card" data-name="chemin de platine" data-genre="Trap" data-bpm="119" data-key="A#m" data-price="5.5" data-order="13">
 
-            <img src="assets/img/beat13.jpg" alt="Street Legend">
+            <div class="beat-card-media">
+                <img src="assets/img/beat13.jpg" alt="Pochette du beat Chemin de Platine" loading="lazy">
+            </div>
 
             <div class="beat-info">
 
-                <h3>Chemin de Platine </h3>
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
 
-                <p>Trap •119 BPM A#m </p>
+                <h3>Chemin de Platine</h3>
 
-                <span>5.5 $ </span>
+                <p>Trap • 119 BPM • A#m</p>
 
-                <audio controls>
+                <audio controls preload="none">
                     <source src="assets/audio/beat13.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
                 </audio>
 
                 <a class="buy-btn"
-                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production,%20je%20souhaite%20acheter%20le%20beat%20Street%20Legend."
-                   target="_blank">
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Chemin%20de%20Platine%C2%A0%C2%BB%20(Trap%2C%20119%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
 
                     Commander
 
                 </a>
 
             </div>
-         </div>
-     <!-- ==============================
-     PRODUCTION SUR MESURE
-================================ -->
 
-<div class="custom-production">
+        </div>
 
-    <div class="custom-production-content">
+                 <!-- Beat 14 -->
+        <div class="beat-card" data-name="IF I LOSE" data-genre="Drill" data-bpm="150" data-key="Gm" data-price="5.5" data-order="14">
 
-        <span class="custom-badge">🎵 PRODUCTION SUR MESURE</span>
+            <div class="beat-card-media">
+                <img src="assets/img/beat14.jpg" alt="Pochette du beat IF I LOSE " loading="lazy">
+            </div>
 
-        <h2>Tu ne trouves pas le beat qu'il te faut ?</h2>
+            <div class="beat-info">
 
-        <p>
-            Décris-nous ton idée et Matis Production peut créer
-            une production spécialement pensée pour ton univers.
-        </p>
- <a href="production.html" class="custom-production-btn">
-    Décrire mon idée
-</a>
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Dill london</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
+
+                <h3>IF I LOSE</h3>
+
+                <p>Drill london • 150 BPM • G</p>
+
+                <audio controls preload="none">
+                    <source src="assets/audio/beat14.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
+                </audio>
+
+                <a class="buy-btn"
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0IF%20A%20LOSE%C2%A0%C2%BB%20(Lodondrill%2C%20119%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
+
+                    Commander
+
+                </a>
+
+            </div>
+
+        </div>
+
+                <!-- Beat 15 -->
+        <div class="beat-card" data-name="UNGILALELE NAMI" data-genre="Amapiano" data-bpm="116" data-key="Cm" data-price="5.5" data-order="15">
+
+            <div class="beat-card-media">
+                <img src="assets/img/beat15.jpg" alt="Pochette du beat UNGILALELE NAMI="lazy">
+            </div>
+
+            <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Amapiano</span>
+                    <span class="badge badge-price">5 $</span>
+                </div>
+
+                <h3>UNGILALELE NAMI</h3>
+
+                <p>Amapiano • 116 BPM • Cm</p>
+
+                <audio controls preload="none">
+                    <source src="assets/audio/beat15.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
+                </audio>
+
+                <a class="buy-btn"
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0UNGILALELE%20%C2%A0%C2%BB%20(Amapiano%2C%20116%20BPM)%20au%20prix%20de%205%20%24."
+                   target="_blank" rel="noopener">
+
+                    Commander
+
+                </a>
+
+            </div>
+
+        </div>
+
+                <!-- Beat 16 -->
+        <div class="beat-card" data-name="MAKOSA" data-genre="bouyon" data-bpm="160" data-key="Fm" data-price="5.5" data-order="16">
+
+            <div class="beat-card-media">
+                <img src="assets/img/beat16.jpg" alt="Pochette du beat MAKOSA" loading="lazy">
+            </div>
+
+            <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Bouyon</span>
+                    <span class="badge badge-price">5.5 $</span>
+                </div>
+
+                <h3>MAKOSA</h3>
+
+                <p>Bouyon • 160 BPM • Cm</p>
+
+                <audio controls preload="none">
+                    <source src="assets/audio/beat16.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
+                </audio>
+
+                <a class="buy-btn"
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0MAKOSA%20bouyone%C2%A0%C2%BB%20(Bouyon%2C%20160%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
+
+                    Commander
+
+                </a>
+
+            </div>
+
+        </div>
+
+                <!-- Beat 17 -->
+        <div class="beat-card" data-name="last Chance" data-genre="Trap melencolique" data-bpm="80" data-key="Cm" data-price="5" data-order="17">
+
+            <div class="beat-card-media">
+                <img src="assets/img/beat17.jpg" alt="Pochette du beat Last Chance" loading="lazy">
+            </div>
+
+            <div class="beat-info">
+
+                <div class="beat-badges">
+                    <span class="badge badge-genre">Trap melencolique</span>
+                    <span class="badge badge-price">5 $</span>
+                </div>
+
+                <h3>Last Dance</h3>
+
+                <p>Trap melencolique • 80 BPM • Cm</p>
+
+                <audio controls preload="none">
+                    <source src="assets/audio/beat17.mp3" type="audio/mpeg">
+                    Ton navigateur ne supporte pas la lecture audio.
+                </audio>
+
+                <a class="buy-btn"
+                   href="https://wa.me/243853461191?text=Bonjour%20Matis%20Production%2C%20je%20souhaite%20acheter%20le%20beat%20%C2%AB%C2%A0Last%20Chance%C2%A0%C2%BB%20(Trap%20Melencolique%2C%2082%20BPM)%20au%20prix%20de%205.5%20%24."
+                   target="_blank" rel="noopener">
+
+                    Commander
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ==============================
+             PRODUCTION SUR MESURE
+             (toujours en dernier, même si des beats sont ajoutés)
+        ================================ -->
+
+        <div class="custom-production">
+
+            <div class="custom-production-content">
+
+                <span class="custom-badge">🎵 PRODUCTION SUR MESURE</span>
+
+                <h2>Tu ne trouves pas le beat qu'il te faut ?</h2>
+
+                <p>
+                    Décris-nous ton idée et Matis Production peut créer
+                    une production spécialement pensée pour ton univers.
+                </p>
+
+                <a href="production.html" class="custom-production-btn">
+                    Décrire mon idée
+                </a>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-       </div>
-       
+    <p id="noResults" class="no-results" hidden>
+        Aucun beat ne correspond à ta recherche.
+        <button type="button" id="resetFilters" class="reset-filters-btn">Réinitialiser les filtres</button>
+    </p>
+
+</section>
+
+<!-- ================= PAIEMENT MOBILE MONEY ================= -->
+
+<section class="payment-section">
+
+    <div class="payment-container">
+
+        <span class="custom-badge">💳 MOBILE MONEY</span>
+
+        <h2>Comment payer ton beat ?</h2>
+
+        <ol class="payment-steps">
+            <li>Choisis ton beat et clique sur <strong>Commander</strong>.</li>
+            <li>Effectue le paiement via Orange Money ou Airtel Money.</li>
+            <li>Envoie la preuve de paiement à Matis Production sur WhatsApp.</li>
+            <li>Reçois ton fichier rapidement après validation du paiement.</li>
+        </ol>
+
+        <div class="payment-methods">
+
+            <div class="payment-card">
+                <h3>🟠 Orange Money</h3>
+                <p class="payment-number">+243 85***</p>
+                <button type="button" class="copy-btn" data-copy="+243853461191">Copier le numéro</button>
+            </div>
+
+            <div class="payment-card">
+                <h3>🔴 Airtel Money</h3>
+                <p class="payment-number">+243 97***</p>
+                <button type="button" class="copy-btn" data-copy="+243976155437">Copier le numéro</button>
+            </div>
+
+        </div>
+
+        <p class="payment-note">
+            ⚠️ Le paiement n'est pas vérifié automatiquement pour le moment.
+            Envoie toujours une preuve de paiement par WhatsApp après ta transaction.
+        </p>
+
+    </div>
+
 </section>
 
 <footer>
@@ -478,6 +817,8 @@
 </footer>
 
 <script src="assets/js/script.js"></script>
+
+<script type="module" src="assets/js/beats-loader.js"></script>
 
 </body>
 </html>
