@@ -3381,6 +3381,10 @@ body.has-announcement .hero {
     padding: 20px;
 }
 
+.confirm-overlay[hidden] {
+    display: none !important;
+}
+
 .confirm-box {
     background: var(--card);
     border: 1px solid rgba(255,255,255,.1);
