@@ -73,28 +73,26 @@ topButton.addEventListener("click",()=>{
 
 // =======================================
 // Un seul lecteur audio à la fois
+// (écoute déléguée : fonctionne aussi pour les
+// lecteurs ajoutés dynamiquement après coup, ex. Firestore)
 // =======================================
 
-const players = document.querySelectorAll("audio");
+document.addEventListener("play", (event) => {
 
-players.forEach(player => {
+    const target = event.target;
 
-    player.addEventListener("play", () => {
+    if (!target || target.tagName !== "AUDIO") return;
 
-        players.forEach(otherPlayer => {
+    document.querySelectorAll("audio").forEach((otherPlayer) => {
 
-            if (otherPlayer !== player) {
-
-                otherPlayer.pause();
-                otherPlayer.currentTime = 0;
-
-            }
-
-        });
+        if (otherPlayer !== target && !otherPlayer.paused) {
+            otherPlayer.pause();
+            otherPlayer.currentTime = 0;
+        }
 
     });
 
-});
+}, true); // phase de capture : nécessaire car "play" ne remonte pas (bubble)
 
 // =======================================
 // HERO STATS MOBILE

@@ -108,16 +108,38 @@ onAuthStateChanged(auth, (user) => {
         importBtn.addEventListener("click", () => {
 
             showConfirmModal(
-                "Importer les 13 beats actuels dans Firestore ? À utiliser une seule fois pour éviter les doublons.",
+                "Importer les beats du catalogue qui ne sont pas encore dans Firestore ?",
                 "Importer",
                 async () => {
 
                     importBtn.disabled = true;
-                    importBtn.textContent = "Import en cours...";
+                    importBtn.textContent = "Vérification des doublons...";
 
                     try {
 
-                        for (const beat of EXISTING_CATALOG) {
+                        // On récupère les beats déjà présents pour ne
+                        // jamais importer deux fois le même (comparaison
+                        // par nom, insensible à la casse/espaces).
+                        const existingSnapshot = await getDocs(collection(db, "beats"));
+                        const existingNames = new Set();
+
+                        existingSnapshot.forEach((docSnap) => {
+                            const n = (docSnap.data().name || "").trim().toLowerCase();
+                            if (n) existingNames.add(n);
+                        });
+
+                        const toImport = EXISTING_CATALOG.filter((beat) =>
+                            !existingNames.has(beat.name.trim().toLowerCase())
+                        );
+
+                        if (toImport.length === 0) {
+                            importBtn.textContent = "✓ Catalogue déjà importé";
+                            return;
+                        }
+
+                        importBtn.textContent = "Import en cours...";
+
+                        for (const beat of toImport) {
                             await addDoc(collection(db, "beats"), {
                                 ...beat,
                                 active: true,
@@ -125,7 +147,7 @@ onAuthStateChanged(auth, (user) => {
                             });
                         }
 
-                        importBtn.textContent = "✓ Import terminé";
+                        importBtn.textContent = "✓ " + toImport.length + " beat(s) importé(s)";
                         loadBeats();
 
                     } catch (error) {

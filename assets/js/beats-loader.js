@@ -122,6 +122,13 @@ async function loadBeatsFromFirestore() {
         docsArray.forEach((docSnap) => {
             const card = buildBeatCard(docSnap.id, docSnap.data(), order);
             container.insertBefore(card, customCard || null);
+
+            // Force le navigateur à reconnaître correctement la balise
+            // <source> injectée dynamiquement (sinon la lecture peut être
+            // lente ou capricieuse selon les navigateurs).
+            const audioEl = card.querySelector("audio");
+            if (audioEl) audioEl.load();
+
             order--;
         });
 
